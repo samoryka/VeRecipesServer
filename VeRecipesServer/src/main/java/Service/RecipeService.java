@@ -8,6 +8,8 @@ package Service;
 import Dao.JpaUtil;
 import Dao.RecipeDao;
 import Model.Recipe;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -26,17 +28,31 @@ public class RecipeService {
         
         JpaUtil.createEntityManager();
         JpaUtil.openTransaction();
-        try {
-            dao.create(recipe);
-        }catch(Exception e)
-        {
-            throw new Exception(e.getCause() +": Couldn't contact the database, please try again later");
-        }
         
+        dao.create(recipe);
         
         JpaUtil.commitTransaction();
         JpaUtil.closeEntityManager();
         
+    }
+    
+    public List<Recipe> getAllRecipes() throws Throwable {
+        JpaUtil.createEntityManager();
         
+        List<Recipe> recipes =  dao.findAll();
+        
+        JpaUtil.closeEntityManager();
+        
+        return recipes;
+    }
+    
+    public List<Recipe> getRecipesByDate(Date date) throws Throwable {
+        JpaUtil.createEntityManager();
+        
+        List<Recipe> recipes =  dao.findByDate(date);
+        
+        JpaUtil.closeEntityManager();
+        
+        return recipes;
     }
 }

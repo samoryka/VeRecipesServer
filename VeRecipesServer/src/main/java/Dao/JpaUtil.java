@@ -62,7 +62,7 @@ public class JpaUtil {
     }
 
     /**
-     * Creates an instance of the Entity Manager (bounded to a thread)
+     * Creates an instance of the Entity Manager (bound to a thread)
      */
     public static void createEntityManager() {
         log("Creation of the persistence context");
@@ -70,7 +70,7 @@ public class JpaUtil {
     }
 
     /**
-     * Closes the current instance of the Entity Manager (bounded to the current thread)
+     * Closes the current instance of the Entity Manager (bound to the current thread)
      */
     public static void closeEntityManager() {
         log("Closure of the persistence context");

@@ -20,22 +20,24 @@ public class Recipe implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String imageURL;
     private String ingredients;
     private String steps;
     private int cookingTime;
     private int preparationTime;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date publicationTime;
+    private Date publicationDate;
 
     public Recipe(){};
     
-    public Recipe(String name, String ingredients, String steps, int cookingTime, int preparationTime, Date publicationTime) {
+    public Recipe(String name, String imageURL, String ingredients, String steps, int cookingTime, int preparationTime, Date publicationTime) {
         this.name = name;
+        this.imageURL = imageURL;
         this.ingredients = ingredients;
         this.steps = steps;
         this.cookingTime = cookingTime;
         this.preparationTime = preparationTime;
-        this.publicationTime = publicationTime;
+        this.publicationDate = publicationTime;
     }
       
     @Override
@@ -51,6 +53,11 @@ public class Recipe implements Serializable{
         return name;
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
+    
+
     public String getIngredients() {
         return ingredients;
     }
@@ -63,12 +70,12 @@ public class Recipe implements Serializable{
         return cookingTime;
     }
 
-    public int getPreparationTime() {
+    public int getPreparationDate() {
         return preparationTime;
     }
 
     public Date getPublicationTime() {
-        return publicationTime;
+        return publicationDate;
     }
     
     
@@ -79,7 +86,8 @@ public class Recipe implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
@@ -96,7 +104,7 @@ public class Recipe implements Serializable{
         this.preparationTime = preparationTime;
     }
 
-    public void setPublicationTime(Date publicationTime) {
-        this.publicationTime = publicationTime;
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
     }
 }
