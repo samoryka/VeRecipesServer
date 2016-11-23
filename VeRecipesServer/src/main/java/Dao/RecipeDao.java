@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Model.AppUser;
 import Model.Recipe;
 import java.util.Date;
 import java.util.List;
@@ -80,4 +81,17 @@ public class RecipeDao {
     }
     
     
+    public List<Recipe> findByAppUser(AppUser user) throws Throwable {
+        EntityManager em = JpaUtil.getEntityManager();
+        List<Recipe> recipes = null;
+        try {
+            String query = "SELECT r FROM Recipe r, AppUserRecipe aur WHERE r.id = aur.recipeId AND aur.appUserId = ?1";
+            Query q = em.createQuery(query).setParameter(1, user.getId());
+            recipes = (List<Recipe>) q.getResultList();
+            }
+        catch(Exception e) {
+            throw e;
+        }     
+        return recipes;
+    }
 }

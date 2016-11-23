@@ -28,6 +28,7 @@ public class Recipe implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date publicationDate;
 
+    // A Blank constructor is necessary for JPA
     public Recipe(){};
     
     public Recipe(String name, String imageURL, String ingredients, String steps, int cookingTime, int preparationTime, Date publicationTime) {

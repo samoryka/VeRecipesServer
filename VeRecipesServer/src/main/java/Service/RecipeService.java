@@ -7,6 +7,8 @@ package Service;
 
 import Dao.JpaUtil;
 import Dao.RecipeDao;
+import Model.AppUser;
+import Model.AppUserRecipe;
 import Model.Recipe;
 import java.util.Date;
 import java.util.List;
@@ -50,6 +52,17 @@ public class RecipeService {
         JpaUtil.createEntityManager();
         
         List<Recipe> recipes =  dao.findByDate(date);
+        
+        JpaUtil.closeEntityManager();
+        
+        return recipes;
+    }
+    
+    public List<Recipe> getRecipesSavedByUser(AppUser user) throws Throwable {
+        
+        JpaUtil.createEntityManager();
+        
+        List<Recipe> recipes =  dao.findByAppUser(user);
         
         JpaUtil.closeEntityManager();
         
