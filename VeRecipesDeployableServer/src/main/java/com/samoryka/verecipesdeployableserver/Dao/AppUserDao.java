@@ -15,51 +15,61 @@ import javax.persistence.Query;
  * @author kasam
  */
 public class AppUserDao {
-    
+
     public void create(AppUser user) throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         try {
             em.persist(user);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw e;
         }
     }
-    
+
     public AppUser update(AppUser user) throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         try {
             user = em.merge(user);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             throw e;
         }
         return user;
     }
-    
+
     public AppUser findById(Long id) throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         AppUser client = null;
         try {
             client = em.find(AppUser.class, id);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw e;
         }
         return client;
     }
-    
+
+    public AppUser findByUsername(String username) throws Throwable {
+        EntityManager em = JpaUtil.getEntityManager();
+        AppUser user = null;
+        try {
+
+            String query = "SELECT au FROM AppUser au WHERE au.username = ?1";
+            Query q = em.createQuery(query).setParameter(1, username);
+            user = (AppUser) q.getSingleResult();
+        } catch (Exception e) {
+            throw e;
+        }
+        return user;
+    }
+
     public List<AppUser> findAll() throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         List<AppUser> users = null;
         try {
             Query q = em.createQuery("SELECT u FROM AppUser u");
             users = (List<AppUser>) q.getResultList();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw e;
-        }     
+        }
         return users;
     }
-    
+
 }

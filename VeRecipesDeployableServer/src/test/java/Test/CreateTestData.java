@@ -18,8 +18,9 @@ import java.util.List;
  *
  * @author kasam
  */
-public class AppUserRecipeServiceTest {
-     public static void main(String[] args) throws Throwable {
+public class CreateTestData {
+    
+    public static void main(String[] args) throws Throwable {
          RecipeService recipeServ = new RecipeService();
          AppUserService userServ = new AppUserService();
          AppUserRecipeService userRecipeServ = new AppUserRecipeService();
@@ -50,9 +51,6 @@ public class AppUserRecipeServiceTest {
             System.out.println(r);
         }
         System.out.println();
-         
-         
-         
-     }
+    }
     
 }

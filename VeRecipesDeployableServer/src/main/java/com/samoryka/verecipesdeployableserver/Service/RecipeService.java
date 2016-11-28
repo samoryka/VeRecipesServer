@@ -57,11 +57,11 @@ public class RecipeService {
         return recipes;
     }
     
-    public List<Recipe> getRecipesSavedByUser(AppUser user) throws Throwable {
+    public List<Recipe> getRecipesSavedByUser(Long userId) throws Throwable {
         
         JpaUtil.createEntityManager();
         
-        List<Recipe> recipes =  dao.findByAppUser(user);
+        List<Recipe> recipes =  dao.findByAppUser(userId);
         
         JpaUtil.closeEntityManager();
         

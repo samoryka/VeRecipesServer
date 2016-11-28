@@ -46,6 +46,17 @@ public class AppUserService {
                 
     }
     
+    public AppUser getAppUserByUsername(String username) throws Throwable {
+        JpaUtil.createEntityManager();
+        
+        AppUser user = dao.findByUsername(username);
+        
+        JpaUtil.closeEntityManager();
+        
+        return user;
+                
+    }
+    
     public List<AppUser> getAllAppUsers() throws Throwable {
         JpaUtil.createEntityManager();
         

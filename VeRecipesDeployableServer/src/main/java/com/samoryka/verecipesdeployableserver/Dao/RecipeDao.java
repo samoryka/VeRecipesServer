@@ -81,12 +81,12 @@ public class RecipeDao {
     }
     
     
-    public List<Recipe> findByAppUser(AppUser user) throws Throwable {
+    public List<Recipe> findByAppUser(Long userId) throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         List<Recipe> recipes = null;
         try {
             String query = "SELECT r FROM Recipe r, AppUserRecipe aur WHERE r.id = aur.recipeId AND aur.appUserId = ?1";
-            Query q = em.createQuery(query).setParameter(1, user.getId());
+            Query q = em.createQuery(query).setParameter(1, userId);
             recipes = (List<Recipe>) q.getResultList();
             }
         catch(Exception e) {
