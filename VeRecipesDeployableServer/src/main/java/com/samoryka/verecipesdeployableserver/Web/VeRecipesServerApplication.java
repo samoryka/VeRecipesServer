@@ -6,6 +6,7 @@
 package com.samoryka.verecipesdeployableserver.Web;
 
 import com.samoryka.verecipesdeployableserver.Model.AppUser;
+import com.samoryka.verecipesdeployableserver.Model.AppUserRecipe;
 import com.samoryka.verecipesdeployableserver.Model.Recipe;
 import com.samoryka.verecipesdeployableserver.Service.AppUserRecipeService;
 import com.samoryka.verecipesdeployableserver.Service.AppUserService;
@@ -53,7 +54,7 @@ public class VeRecipesServerApplication {
     }
 
     // ----- USER REQUESTS -----
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
     boolean signUp(@RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "mail", required = true) String mail
@@ -68,18 +69,25 @@ public class VeRecipesServerApplication {
         return testUser.getUsername() == newUser.getUsername();
 
     }
-    
-    
+
+    @RequestMapping(value = "/userRecipe", method = RequestMethod.PUT)
+    void saveRecipe(@RequestParam(value = "userId", required = true) long userId,
+            @RequestParam(value = "recipeId", required = true) long recipeId
+    ) throws Throwable {
+        AppUserRecipe save = new AppUserRecipe(userId, recipeId);
+        userRecipeSrv.createAppUserRecipe(save);
+    }
+
     // ----- ADMINISTRATION REQUESTS (data management) -----
     @RequestMapping(value = "/recipe", method = RequestMethod.PUT)
-    void addRecipe( @RequestParam(value = "sourceId", required = true) long sourceId,
-                    @RequestParam(value = "name", required = true) String name,
-                    @RequestParam(value = "imageURL", required = true) String imageURL,
-                    @RequestParam(value = "recipeURL", required = true) String recipeURL,
-                    @RequestParam(value = "preparationTime", required = true) int preparationTime,
-                    @RequestParam(value = "publicationDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date publicationDate)
-            throws Throwable{
-        
+    void addRecipe(@RequestParam(value = "sourceId", required = true) long sourceId,
+            @RequestParam(value = "name", required = true) String name,
+            @RequestParam(value = "imageURL", required = true) String imageURL,
+            @RequestParam(value = "recipeURL", required = true) String recipeURL,
+            @RequestParam(value = "preparationTime", required = true) int preparationTime,
+            @RequestParam(value = "publicationDate", required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date publicationDate)
+            throws Throwable {
+
         Recipe newRecipe = new Recipe(sourceId, name, imageURL, recipeURL, preparationTime, publicationDate);
         recipeSrv.createRecipe(newRecipe);
     }
