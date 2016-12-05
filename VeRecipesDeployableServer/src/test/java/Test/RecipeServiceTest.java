@@ -18,14 +18,14 @@ import java.util.List;
 public class RecipeServiceTest {
     
     public static void main(String[] args) throws Throwable {
-        Recipe recipe1 = new Recipe("Yasa Chicken","google.fr", "Chicken;;onions;;mustard", "Cook it;;Eat it", 60,90,new Date());
+        Recipe recipe1 = new Recipe((long) 0, "Yasa Chicken","google.fr", "google.com", 90,new Date());
         
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, 2020);
         cal.set(Calendar.MONTH, Calendar.JUNE);
         cal.set(Calendar.DAY_OF_MONTH, 16);
         
-        Recipe recipe2 = new Recipe("Yasa Chicken 2","google.com", "Chicken;;onions;;mustard", "Cook it;;Eat it", 60,90,cal.getTime());
+        Recipe recipe2 = new Recipe((long) 0, "Yasa Chicken 2","google.com", "google.com", 90,cal.getTime());
         
         RecipeService serv = new RecipeService();
         
@@ -43,7 +43,7 @@ public class RecipeServiceTest {
         
         // Test of the acquisition of all recipes at a certain date
         System.out.println("RECIPES AT A CERTAIN DATE :");
-        List<Recipe> recipesByDate = serv.getRecipesByDate(recipe1.getPublicationTime());
+        List<Recipe> recipesByDate = serv.getRecipesByDate(recipe1.getPublicationDate());
         for(Recipe r : recipesByDate) {
             System.out.println(r);
         }

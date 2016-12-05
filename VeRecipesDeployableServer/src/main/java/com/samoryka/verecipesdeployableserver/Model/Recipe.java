@@ -19,11 +19,10 @@ public class Recipe implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long sourceId;  // The id that references the recipe in the source
     private String name;
     private String imageURL;
-    private String ingredients;
-    private String steps;
-    private int cookingTime;
+    private String recipeURL;
     private int preparationTime;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date publicationDate;
@@ -31,12 +30,11 @@ public class Recipe implements Serializable{
     // A Blank constructor is necessary for JPA
     public Recipe(){};
     
-    public Recipe(String name, String imageURL, String ingredients, String steps, int cookingTime, int preparationTime, Date publicationTime) {
+    public Recipe(Long sourceId, String name, String imageURL, String recipeURL, int preparationTime, Date publicationTime) {
+        this.sourceId = sourceId;
         this.name = name;
         this.imageURL = imageURL;
-        this.ingredients = ingredients;
-        this.steps = steps;
-        this.cookingTime = cookingTime;
+        this.recipeURL = recipeURL;
         this.preparationTime = preparationTime;
         this.publicationDate = publicationTime;
     }
@@ -50,6 +48,10 @@ public class Recipe implements Serializable{
         return id;
     }
 
+    public Long getSourceId() {
+        return sourceId;
+    }    
+
     public String getName() {
         return name;
     }
@@ -57,25 +59,20 @@ public class Recipe implements Serializable{
     public String getImageURL() {
         return imageURL;
     }
-    
 
-    public String getIngredients() {
-        return ingredients;
+    public String getRecipeURL() {
+        return recipeURL;
     }
 
-    public String getSteps() {
-        return steps;
-    }
-
-    public int getCookingTime() {
-        return cookingTime;
+    public int getPreparationTime() {
+        return preparationTime;
     }
 
     public int getPreparationDate() {
         return preparationTime;
     }
 
-    public Date getPublicationTime() {
+    public Date getPublicationDate() {
         return publicationDate;
     }
     
@@ -84,21 +81,21 @@ public class Recipe implements Serializable{
         this.id = id;
     }
 
+    public void setSourceId(Long sourceId) {
+        this.sourceId = sourceId;
+    }
+    
+
     public void setName(String name) {
         this.name = name;
     }
     
+        public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
     
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public void setSteps(String steps) {
-        this.steps = steps;
-    }
-
-    public void setCookingTime(int cookingTime) {
-        this.cookingTime = cookingTime;
+    public void setRecipeURL(String recipeURL) {
+        this.recipeURL = recipeURL;
     }
 
     public void setPreparationTime(int preparationTime) {

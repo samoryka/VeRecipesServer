@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,17 +71,16 @@ public class VeRecipesServerApplication {
     
     
     // ----- ADMINISTRATION REQUESTS (data management) -----
-    @RequestMapping(value = "/recipe", method = RequestMethod.POST)
-    void addRecipe(@RequestParam(value = "name", required = true) String name,
-                      @RequestParam(value = "imageURL", required = true) String imageURL,
-                      @RequestParam(value = "ingredients", required = true) String ingredients,
-                      @RequestParam(value = "steps", required = true) String steps,
-                      @RequestParam(value = "cookingTime", required = true) int cookingTime,
-                      @RequestParam(value = "preparationTime", required = true) int preparationTime,
-                      @RequestParam(value = "publicationDare", required = true) Date publicationDate)
+    @RequestMapping(value = "/recipe", method = RequestMethod.PUT)
+    void addRecipe( @RequestParam(value = "sourceId", required = true) long sourceId,
+                    @RequestParam(value = "name", required = true) String name,
+                    @RequestParam(value = "imageURL", required = true) String imageURL,
+                    @RequestParam(value = "recipeURL", required = true) String recipeURL,
+                    @RequestParam(value = "preparationTime", required = true) int preparationTime,
+                    @RequestParam(value = "publicationDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date publicationDate)
             throws Throwable{
         
-        Recipe newRecipe = new Recipe(name, imageURL, ingredients, steps, cookingTime, preparationTime, publicationDate);
+        Recipe newRecipe = new Recipe(sourceId, name, imageURL, recipeURL, preparationTime, publicationDate);
         recipeSrv.createRecipe(newRecipe);
     }
 
