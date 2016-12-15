@@ -67,4 +67,14 @@ public class AppUserService {
         return users;
     }
     
+    public AppUser login(String username, String password) throws Throwable {
+        JpaUtil.createEntityManager();
+        
+        AppUser user =  dao.findByUsernameAndPassword(username, password);
+        
+        JpaUtil.closeEntityManager();
+        
+        return user;
+    }
+    
 }

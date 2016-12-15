@@ -59,6 +59,21 @@ public class AppUserDao {
         }
         return user;
     }
+    
+    public AppUser findByUsernameAndPassword(String username, String password) throws Throwable {
+        EntityManager em = JpaUtil.getEntityManager();
+        AppUser user = null;
+        try {
+
+            String query = "SELECT au FROM AppUser au WHERE au.username = ?1 AND au.password = ?2";
+            Query q = em.createQuery(query).setParameter(1, username);
+            q.setParameter(2, password);
+            user = (AppUser) q.getSingleResult();
+        } catch (Exception e) {
+            throw e;
+        }
+        return user;
+    }
 
     public List<AppUser> findAll() throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();

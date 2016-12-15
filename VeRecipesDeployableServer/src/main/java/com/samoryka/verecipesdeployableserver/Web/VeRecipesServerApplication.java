@@ -69,6 +69,15 @@ public class VeRecipesServerApplication {
         return testUser.getUsername() == newUser.getUsername();
 
     }
+    
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    AppUser login(@RequestParam(value = "username", required = true) String username,
+            @RequestParam(value = "password", required = true) String password
+    ) throws Throwable {
+
+        //We check that the user has been saved in the database and return the according boolean
+        return userSrv.login(username, password);
+    }
 
     @RequestMapping(value = "/userRecipe", method = RequestMethod.PUT)
     void saveRecipe(@RequestParam(value = "userId", required = true) long userId,

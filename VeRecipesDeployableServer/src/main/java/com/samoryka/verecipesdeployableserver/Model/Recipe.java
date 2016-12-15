@@ -68,10 +68,6 @@ public class Recipe implements Serializable{
         return preparationTime;
     }
 
-    public int getPreparationDate() {
-        return preparationTime;
-    }
-
     public Date getPublicationDate() {
         return publicationDate;
     }
