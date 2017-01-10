@@ -6,10 +6,10 @@
     <class>com.samoryka.verecipesdeployableserver.Model.AppUserRecipe</class>
     <class>com.samoryka.verecipesdeployableserver.Model.Recipe</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/VeRecipes"/>
-      <property name="javax.persistence.jdbc.user" value="VeRecipes"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="VeRecipes"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpaverecipes?zeroDateTimeBehavior=convertToNull&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
