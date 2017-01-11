@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
 public class AppUser {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
     @Column(unique=true)

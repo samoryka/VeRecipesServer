@@ -24,7 +24,7 @@ import javax.persistence.Temporal;
 public class AppUserRecipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long appUserId;
     private long recipeId;

@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 public class Recipe implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long sourceId;  // The id that references the recipe in the source
     private String name;
