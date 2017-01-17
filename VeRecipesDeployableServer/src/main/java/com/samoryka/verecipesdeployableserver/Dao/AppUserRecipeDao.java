@@ -64,4 +64,20 @@ public class AppUserRecipeDao {
         return appUserRecipes;
     }
     
+    public AppUserRecipe findByUserIdAndRecipeId(long userId, long recipeId) {
+        EntityManager em = JpaUtil.getEntityManager();
+        AppUserRecipe appUserRecipe = null;
+        try {
+            String query = "SELECT a FROM AppUserRecipe a WHERE a.userId = ?1 AND a.recipeId = ?2";
+            Query q = em.createQuery(query)
+                    .setParameter(1, userId)
+                    .setParameter(2, recipeId);
+            appUserRecipe = (AppUserRecipe) q.getSingleResult();
+        }
+        catch(Exception e) {
+            throw e;
+        }     
+        return appUserRecipe;
+    }
+    
 }

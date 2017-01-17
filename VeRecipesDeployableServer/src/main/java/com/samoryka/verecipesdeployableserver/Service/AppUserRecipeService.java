@@ -48,7 +48,18 @@ public class AppUserRecipeService {
         JpaUtil.closeEntityManager();
 
     }
+    
+    public void deleteAppUserRecipeByUserIdAndRecipeId( long userId, long recipeId) throws Throwable {
+        JpaUtil.createEntityManager();
+        JpaUtil.openTransaction();
 
+        AppUserRecipe userRecipe = dao.findByUserIdAndRecipeId(userId, recipeId);
+        dao.delete(userRecipe);
+
+        JpaUtil.commitTransaction();
+        JpaUtil.closeEntityManager();
+    }
+    
     public void deleteAppUserRecipe(AppUserRecipe userRecipe) throws Throwable {
 
         JpaUtil.createEntityManager();

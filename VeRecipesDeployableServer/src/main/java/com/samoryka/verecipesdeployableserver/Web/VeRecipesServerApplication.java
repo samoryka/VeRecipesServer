@@ -91,8 +91,7 @@ public class VeRecipesServerApplication {
     @RequestMapping(value="/userRecipe", method = RequestMethod.DELETE)
     void unsaveRecipe(@RequestParam(value = "userId", required = true) long userId,
             @RequestParam(value = "recipeId", required = true) long recipeId) throws Throwable {
-        AppUserRecipe unsave = new AppUserRecipe(userId, recipeId);
-        userRecipeSrv.deleteAppUserRecipe(unsave);
+        userRecipeSrv.deleteAppUserRecipeByUserIdAndRecipeId(userId, recipeId);
     }
     
 
