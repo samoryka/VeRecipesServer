@@ -78,7 +78,8 @@ public class VeRecipesServerApplication {
         //We check that the user has been saved in the database and return the according boolean
         return userSrv.login(username, password);
     }
-
+    
+    // ----- USERRECIPE REQUESTS -----
     @RequestMapping(value = "/userRecipe", method = RequestMethod.PUT)
     void saveRecipe(@RequestParam(value = "userId", required = true) long userId,
             @RequestParam(value = "recipeId", required = true) long recipeId
@@ -86,6 +87,14 @@ public class VeRecipesServerApplication {
         AppUserRecipe save = new AppUserRecipe(userId, recipeId);
         userRecipeSrv.createAppUserRecipe(save);
     }
+    
+    @RequestMapping(value="/userRecipe", method = RequestMethod.DELETE)
+    void unsaveRecipe(@RequestParam(value = "userId", required = true) long userId,
+            @RequestParam(value = "recipeId", required = true) long recipeId) throws Throwable {
+        AppUserRecipe unsave = new AppUserRecipe(userId, recipeId);
+        userRecipeSrv.deleteAppUserRecipe(unsave);
+    }
+    
 
     // ----- ADMINISTRATION REQUESTS (data management) -----
     @RequestMapping(value = "/recipe", method = RequestMethod.PUT)
