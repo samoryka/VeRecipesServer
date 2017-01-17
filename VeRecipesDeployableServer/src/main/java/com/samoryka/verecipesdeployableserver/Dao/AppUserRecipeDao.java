@@ -68,7 +68,7 @@ public class AppUserRecipeDao {
         EntityManager em = JpaUtil.getEntityManager();
         AppUserRecipe appUserRecipe = null;
         try {
-            String query = "SELECT a FROM AppUserRecipe a WHERE a.userId = ?1 AND a.recipeId = ?2";
+            String query = "SELECT a FROM AppUserRecipe a WHERE a.appUserId = ?1 AND a.recipeId = ?2";
             Query q = em.createQuery(query)
                     .setParameter(1, userId)
                     .setParameter(2, recipeId);
