@@ -12,3 +12,4 @@
 /VeRecipes/
 derby.log
 /TestSpringJPA/target/
+persistence.xml
