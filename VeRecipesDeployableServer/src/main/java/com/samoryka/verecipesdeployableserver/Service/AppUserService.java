@@ -28,8 +28,10 @@ public class AppUserService {
         JpaUtil.createEntityManager();
         JpaUtil.openTransaction();
         
-        dao.create(user);
-        
+        // TODO : full server-side verification of the user's credentials
+        if(user.getPassword().length() >= 8)
+            dao.create(user);
+
         JpaUtil.commitTransaction();
         JpaUtil.closeEntityManager();
         

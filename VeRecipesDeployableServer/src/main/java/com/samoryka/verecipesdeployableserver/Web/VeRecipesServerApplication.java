@@ -53,13 +53,15 @@ public class VeRecipesServerApplication {
         }
     }
 
+    
+    
     // ----- USER REQUESTS -----
     @RequestMapping(value = "/user", method = RequestMethod.PUT)
     boolean signUp(@RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "mail", required = true) String mail
     ) throws Throwable {
-
+       
         //We create a user and try to save him in the database
         AppUser newUser = new AppUser(username, password, mail);
         userSrv.createAppUser(newUser);
@@ -79,6 +81,8 @@ public class VeRecipesServerApplication {
         return userSrv.login(username, password);
     }
     
+    
+    
     // ----- USERRECIPE REQUESTS -----
     @RequestMapping(value = "/userRecipe", method = RequestMethod.PUT)
     void saveRecipe(@RequestParam(value = "userId", required = true) long userId,
@@ -95,6 +99,8 @@ public class VeRecipesServerApplication {
     }
     
 
+    
+    
     // ----- ADMINISTRATION REQUESTS (data management) -----
     @RequestMapping(value = "/recipe", method = RequestMethod.PUT)
     void addRecipe(@RequestParam(value = "sourceId", required = true) long sourceId,
