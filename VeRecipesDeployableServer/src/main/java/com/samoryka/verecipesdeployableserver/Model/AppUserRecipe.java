@@ -1,29 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.samoryka.verecipesdeployableserver.Model;
 
-import java.util.Calendar;
-import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
+
 /**
- *
- * @author kasam This class is used to keep track of which recipes have been
- * saved by users
+ * Entity representing a link between a user and a recipe
+ * (the user saved the recipe)
+ * 
+ * @author Samory Ka
  */
 @Entity
-@Table(uniqueConstraints=
-       @UniqueConstraint(columnNames = {"appUserId", "recipeId"})) 
+@Table(uniqueConstraints
+        = @UniqueConstraint(columnNames = {"appUserId", "recipeId"}))
 
 public class AppUserRecipe {
 
@@ -40,7 +33,7 @@ public class AppUserRecipe {
         this.appUserId = appUserId;
         this.recipeId = recipeId;
     }
-    
+
     public AppUserRecipe(AppUser user, Recipe recipe) {
         this.appUserId = user.getId();
         this.recipeId = recipe.getId();

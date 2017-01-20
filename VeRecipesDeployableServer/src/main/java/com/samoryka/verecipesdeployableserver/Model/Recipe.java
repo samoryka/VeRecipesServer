@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.samoryka.verecipesdeployableserver.Model;
 
 import java.io.Serializable;
@@ -13,8 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 
+/**
+ * Entity representing a recipe saved in VeRecipe's database
+ * 
+ * @author Samory Ka
+ */
 @Entity
-public class Recipe implements Serializable{
+public class Recipe implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,10 @@ public class Recipe implements Serializable{
     private Date publicationDate;
 
     // A Blank constructor is necessary for JPA
-    public Recipe(){};
+    public Recipe() {
+    }
+
+    ;
     
     public Recipe(Long sourceId, String name, String imageURL, String recipeURL, int preparationTime, Date publicationTime) {
         this.sourceId = sourceId;
@@ -38,10 +41,10 @@ public class Recipe implements Serializable{
         this.preparationTime = preparationTime;
         this.publicationDate = publicationTime;
     }
-      
+
     @Override
     public String toString() {
-        return "Recipe " + id + ": " + name; 
+        return "Recipe " + id + ": " + name;
     }
 
     public Long getId() {
@@ -50,7 +53,7 @@ public class Recipe implements Serializable{
 
     public Long getSourceId() {
         return sourceId;
-    }    
+    }
 
     public String getName() {
         return name;
@@ -71,8 +74,7 @@ public class Recipe implements Serializable{
     public Date getPublicationDate() {
         return publicationDate;
     }
-    
-    
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -80,16 +82,15 @@ public class Recipe implements Serializable{
     public void setSourceId(Long sourceId) {
         this.sourceId = sourceId;
     }
-    
 
     public void setName(String name) {
         this.name = name;
     }
-    
-        public void setImageURL(String imageURL) {
+
+    public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
-    
+
     public void setRecipeURL(String recipeURL) {
         this.recipeURL = recipeURL;
     }

@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author kasam
+ * @author Samory Ka
  */
 public class AppUserRecipeServiceTest {
      public static void main(String[] args) throws Throwable {

@@ -5,14 +5,20 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.RollbackException;
 
-// Largely inspired by a class given by my teachers last year at INSA Lyon (Yann GRIPAY and Anne TCHOUNIKINE)
+/**
+ * Jpa reccurent operations
+ * Largely inspired by a class given by my teachers last year at INSA Lyon (Yann GRIPAY and Anne TCHOUNIKINE)
+ * 
+ * @author Samory Ka
+ */
 public class JpaUtil {
 
     public static final String PERSISTENCE_UNIT_NAME = "VeRecipesPersist";
 
     private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
     /**
-     * Manages the current instances of the Entity Manager. It assures us that there only is one instance per thread
+     * Manages the current instances of the Entity Manager. It assures us that
+     * there only is one instance per thread
      */
     private static final ThreadLocal<EntityManager> threadLocalEntityManager = new ThreadLocal<EntityManager>() {
 
@@ -70,7 +76,8 @@ public class JpaUtil {
     }
 
     /**
-     * Closes the current instance of the Entity Manager (bound to the current thread)
+     * Closes the current instance of the Entity Manager (bound to the current
+     * thread)
      */
     public static void closeEntityManager() {
         log("Closure of the persistence context");

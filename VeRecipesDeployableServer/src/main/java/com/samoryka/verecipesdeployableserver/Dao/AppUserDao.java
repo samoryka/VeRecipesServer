@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.samoryka.verecipesdeployableserver.Dao;
 
 import com.samoryka.verecipesdeployableserver.Model.AppUser;
@@ -11,8 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
+ * SQL Intelligence for AppUsers
  *
- * @author kasam
+ * @author Samory Ka
  */
 public class AppUserDao {
 
@@ -59,7 +55,7 @@ public class AppUserDao {
         }
         return user;
     }
-    
+
     public AppUser findByUsernameAndPassword(String username, String password) throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         AppUser user = null;

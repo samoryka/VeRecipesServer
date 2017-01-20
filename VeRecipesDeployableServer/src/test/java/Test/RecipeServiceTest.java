@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author kasam
+ * @author Samory Ka
  */
 public class RecipeServiceTest {
     

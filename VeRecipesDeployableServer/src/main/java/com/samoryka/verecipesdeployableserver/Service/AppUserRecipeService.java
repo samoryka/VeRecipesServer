@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.samoryka.verecipesdeployableserver.Service;
 
 import com.samoryka.verecipesdeployableserver.Dao.AppUserRecipeDao;
@@ -13,8 +8,9 @@ import com.samoryka.verecipesdeployableserver.Model.Recipe;
 import java.util.List;
 
 /**
+ * Java Intelligence and dao calls for AppUserRecipes
  *
- * @author kasam
+ * @author Samory Ka
  */
 public class AppUserRecipeService {
 
@@ -36,7 +32,7 @@ public class AppUserRecipeService {
         JpaUtil.closeEntityManager();
 
     }
-    
+
     public void createAppUserRecipe(AppUser user, Recipe recipe) throws Throwable {
 
         JpaUtil.createEntityManager();
@@ -48,8 +44,8 @@ public class AppUserRecipeService {
         JpaUtil.closeEntityManager();
 
     }
-    
-    public void deleteAppUserRecipeByUserIdAndRecipeId( long userId, long recipeId) throws Throwable {
+
+    public void deleteAppUserRecipeByUserIdAndRecipeId(long userId, long recipeId) throws Throwable {
         JpaUtil.createEntityManager();
         JpaUtil.openTransaction();
 
@@ -59,7 +55,7 @@ public class AppUserRecipeService {
         JpaUtil.commitTransaction();
         JpaUtil.closeEntityManager();
     }
-    
+
     public void deleteAppUserRecipe(AppUserRecipe userRecipe) throws Throwable {
 
         JpaUtil.createEntityManager();

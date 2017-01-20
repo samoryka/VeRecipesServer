@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.samoryka.verecipesdeployableserver.Model;
 
 import java.util.Calendar;
@@ -15,25 +10,26 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
- *
- * @author kasam
+ * Entity representing a user of VeRecipes (we chose the "AppUser" name because
+ * the "User" name is usuallt reserved in relational databases)
+ * 
+ * @author Samory Ka
  */
-
 @Entity
 public class AppUser {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     private String username;
-    
+
     private String password;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     private String mail;
-    
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date signUpDate;
 
@@ -43,7 +39,7 @@ public class AppUser {
         this.mail = mail;
         this.signUpDate = signupDate;
     }
-    
+
     public AppUser(String username, String password, String mail) {
         this.username = username;
         this.password = password;
@@ -52,14 +48,15 @@ public class AppUser {
     }
 
     // A Blank constructor is necessary for JPA
-    public AppUser(){};
-    
-    @Override
-    public String toString()
-    {
-        return "User: " + this.username + ", " + this.mail + ", join on " + this.signUpDate;
+    public AppUser() {
     }
 
+    ;
+    
+    @Override
+    public String toString() {
+        return "User: " + this.username + ", " + this.mail + ", join on " + this.signUpDate;
+    }
 
     public String getUsername() {
         return username;
@@ -80,8 +77,6 @@ public class AppUser {
     public Date getSignUpDate() {
         return signUpDate;
     }
-    
-    
 
     public void setUsername(String username) {
         this.username = username;
@@ -102,7 +97,5 @@ public class AppUser {
     public void setSignUpDate(Date signUpDate) {
         this.signUpDate = signUpDate;
     }
-    
-    
-    
+
 }
