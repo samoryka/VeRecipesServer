@@ -17,7 +17,6 @@ public class AppUserRecipeService {
     private AppUserRecipeDao dao;
 
     public AppUserRecipeService() {
-        JpaUtil.init();
         dao = new AppUserRecipeDao();
     }
 

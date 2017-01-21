@@ -1,5 +1,6 @@
 package com.samoryka.verecipesdeployableserver.Web;
 
+import com.samoryka.verecipesdeployableserver.Dao.JpaUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,5 +19,6 @@ public class VeRecipesServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VeRecipesServerApplication.class, args);
+        JpaUtil.init();
     }
 }

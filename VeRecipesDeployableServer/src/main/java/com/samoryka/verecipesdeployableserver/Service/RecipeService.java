@@ -17,7 +17,6 @@ public class RecipeService {
     private RecipeDao dao;
 
     public RecipeService() {
-        JpaUtil.init();
         dao = new RecipeDao();
     }
 

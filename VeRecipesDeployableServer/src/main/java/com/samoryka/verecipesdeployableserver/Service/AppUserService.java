@@ -15,7 +15,6 @@ public class AppUserService {
     private AppUserDao dao;
 
     public AppUserService() {
-        JpaUtil.init();
         dao = new AppUserDao();
     }
 
