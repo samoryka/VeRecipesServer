@@ -45,6 +45,7 @@ public class RecipeRestController {
     }
 
     // ----- ADMINISTRATION REQUESTS -----
+    @ApiOperation(value = "Adds a recipe to the database")
     @RequestMapping(value = "/recipe", method = RequestMethod.PUT)
     void addRecipe(@RequestParam(value = "sourceId", required = true) long sourceId,
             @RequestParam(value = "name", required = true) String name,

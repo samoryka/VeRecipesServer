@@ -3,6 +3,7 @@ package com.samoryka.verecipesdeployableserver.Web;
 import com.samoryka.verecipesdeployableserver.Model.AppUser;
 import com.samoryka.verecipesdeployableserver.Service.AppUserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class UserRestController {
 
     private AppUserService userSrv = new AppUserService();
 
+    @ApiOperation(value = "Signs a user up")
     @RequestMapping(value = "/user", method = RequestMethod.PUT)
     boolean signUp(@RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
@@ -34,6 +36,7 @@ public class UserRestController {
         return testUser.getUsername() == newUser.getUsername();
     }
 
+    @ApiOperation(value = "Logs a user in the service (retrieves the user's data)")
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     AppUser login(@RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password
