@@ -3,6 +3,7 @@ package com.samoryka.verecipesdeployableserver.Service;
 import com.samoryka.verecipesdeployableserver.Dao.JpaUtil;
 import com.samoryka.verecipesdeployableserver.Dao.RecipeDao;
 import com.samoryka.verecipesdeployableserver.Model.Recipe;
+import com.samoryka.verecipesdeployableserver.Utility.RecipeUtilities;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class RecipeService {
         JpaUtil.createEntityManager();
         JpaUtil.openTransaction();
 
+        RecipeUtilities.correctJSONTextFormatting(recipe);
         dao.create(recipe);
 
         JpaUtil.commitTransaction();
@@ -36,7 +38,7 @@ public class RecipeService {
         JpaUtil.createEntityManager();
 
         List<Recipe> recipes = dao.findAll();
-
+        
         JpaUtil.closeEntityManager();
 
         return recipes;
