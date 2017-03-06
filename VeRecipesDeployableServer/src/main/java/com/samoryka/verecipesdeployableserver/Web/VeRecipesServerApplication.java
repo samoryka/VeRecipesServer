@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableAutoConfiguration
 @ComponentScan(basePackageClasses = VeRecipesServerApplication.class)
+@ComponentScan(value = "com.samoryka.verecipesdeployableserver.Security")
 public class VeRecipesServerApplication {
 
     public static void main(String[] args) {
