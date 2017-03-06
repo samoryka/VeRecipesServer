@@ -62,11 +62,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   // Configuration of the authorizations
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
+            .antMatchers("/swagger-ui.html").permitAll()    // any person can view the documentation
             .antMatchers(HttpMethod.PUT,"/user").permitAll()    // any person can sign up
             .antMatchers(HttpMethod.PUT,"/recipe").hasRole("ADMIN") // only an admin can add a recipe
             .anyRequest().fullyAuthenticated()
+            .and().formLogin().loginPage("/").permitAll()
             .and().httpBasic()
-            .and().csrf().disable();
+            .and().csrf().disable();    
   }
   
 }
