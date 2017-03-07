@@ -60,12 +60,16 @@ public class AuthenticationConfiguration extends GlobalAuthenticationConfigurerA
 @Configuration
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Override
+public void configure(WebSecurity web) throws Exception {
+    web.ignoring().antMatchers("/user");
+}
+
   // Configuration of the authorizations
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
             .antMatchers(HttpMethod.PUT,"/recipe").hasRole("ADMIN") // only an admin can add a recipe
             .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**","/swagger-resources/configuration/ui","/swagge‌​r-ui.html").permitAl‌​l()
-            .antMatchers("/user").permitAll()
             .anyRequest().fullyAuthenticated()
             .and().httpBasic()
             .and().csrf().disable();    
