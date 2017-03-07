@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -58,15 +59,14 @@ public class AuthenticationConfiguration extends GlobalAuthenticationConfigurerA
 @EnableWebSecurity
 @Configuration
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
- 
+
   // Configuration of the authorizations
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-            .antMatchers("/swagger-ui.html").permitAll()    // any person can view the documentation
-            .antMatchers("/user").permitAll()    // any person can sign up or login
             .antMatchers(HttpMethod.PUT,"/recipe").hasRole("ADMIN") // only an admin can add a recipe
+            .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**","/swagger-resources/configuration/ui","/swagge‌​r-ui.html").permitAl‌​l()
+            .antMatchers("/user").permitAll()
             .anyRequest().fullyAuthenticated()
-            .and().formLogin().loginPage("/").permitAll()
             .and().httpBasic()
             .and().csrf().disable();    
   }
